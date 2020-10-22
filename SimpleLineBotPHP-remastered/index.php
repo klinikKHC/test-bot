@@ -60,7 +60,7 @@ $app->post('/', function ($request, $response)
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 			}
-			elseif(strtolower($userMessage) == '-lanjut')
+			if(strtolower($userMessage) == '-lanjut')
 			{
 				$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
            		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
