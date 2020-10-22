@@ -46,9 +46,17 @@ $app->post('/', function ($request, $response)
 	foreach ($data['events'] as $event)
 	{
 		$userMessage = $event['message']['text'];
-		if(strtolower($userMessage) == 'oi')
+		if(strtolower($userMessage) == 'halo')
 		{
-			$message = "Halo juga";
+			$message = "Hai selamat datang di klinik hewan cimanggu, apa yang dapat kami bantu ? ketik -lanjut untuk melanjutkan atau -end untuk mengakhiri";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		}
+		if(strtolower($userMessage) == '-end')
+		{
+			$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
