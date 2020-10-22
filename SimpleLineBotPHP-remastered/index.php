@@ -59,15 +59,13 @@ $app->post('/', function ($request, $response)
            		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
 			}
-			else if(strtolower($userMessage) == '-lanjut')
+			elseif(strtolower($userMessage) == '-lanjut')
 			{
 				$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
            		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
 			}
 			else
 			{
@@ -75,12 +73,8 @@ $app->post('/', function ($request, $response)
            		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
-			}
-				
-	}
-	
-
+			}		
+		}
 });
 
 // $app->get('/push/{to}/{message}', function ($request, $response, $args)
