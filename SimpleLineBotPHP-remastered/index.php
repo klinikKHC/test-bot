@@ -51,30 +51,28 @@ $app->post('/', function ($request, $response)
 			$message = "Hai selamat datang di klinik hewan cimanggu, apa yang dapat kami bantu ? ketik -lanjut untuk melanjutkan atau -end untuk mengakhiri";
            		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();			
+		}
+		if(strtolower($userMessage) == '-end')
+		{
+			$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
+           	 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
-			if(strtolower($userMessage) == '-end')
-			{
-				$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
-           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-			}
-			else if(strtolower($userMessage) == '-lanjut')
-			{
-				$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
-           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-			}
-			else 
-			{
-				$message = "maaf saya tidak mengerti";
-           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-			}
-				
+		}
+		if(strtolower($userMessage) == '-lanjut')
+		{
+			$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
+           	 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
+		else 
+		{
+			$message = "maaf saya tidak mengerti, cobalah ketik sesuai pilihan";
+           	 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 	}
 });
