@@ -53,15 +53,39 @@ $app->post('/', function ($request, $response)
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
+			if(strtolower($userMessage) == '-end')
+			{
+				$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
+           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+			}
+			else if(strtolower($userMessage) == '-lanjut')
+			{
+				$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
+           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+			}
+			else
+			{
+				$message = "Maaf kami tidak mengerti";
+           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+			}
 		}
-		if(strtolower($userMessage) == '-end')
+		else
 		{
-			$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$message = "Maaf kami tidak mengerti";
+           		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		
 		}
+		
 	}
 	
 
