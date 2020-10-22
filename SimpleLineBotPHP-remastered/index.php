@@ -69,6 +69,7 @@ $app->post('/', function ($request, $response)
 			}
 				
 		}
+	}
 });
 
 // $app->get('/push/{to}/{message}', function ($request, $response, $args)
