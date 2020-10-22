@@ -60,9 +60,16 @@ $app->post('/', function ($request, $response)
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 			}
-			if(strtolower($userMessage) == '-lanjut')
+			else if(strtolower($userMessage) == '-lanjut')
 			{
 				$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
+           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+			}
+			else 
+			{
+				$message = "maaf saya tidak mengerti";
            		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
