@@ -49,7 +49,7 @@ $app->post('/', function ($request, $response)
 		if(strtolower($userMessage) == 'halo')
 		{
 			$message = "Hai selamat datang di klinik hewan cimanggu, apa yang dapat kami bantu ? ketik -lanjut untuk melanjutkan atau -end untuk mengakhiri";
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+           		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
@@ -77,15 +77,7 @@ $app->post('/', function ($request, $response)
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
 			}
-		}
-		else
-		{
-			$message = "Maaf kami tidak mengerti";
-           		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-		}
-		
+				
 	}
 	
 
