@@ -67,13 +67,7 @@ $app->post('/', function ($request, $response)
 				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 			}
-			else
-			{
-				$message = "Maaf kami tidak mengerti";
-           		 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
-				$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
-				return $result->getHTTPStatus() . ' ' . $result->getRawBody();
-			}		
+				
 		}
 });
 
