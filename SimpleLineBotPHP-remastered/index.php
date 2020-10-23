@@ -48,21 +48,21 @@ $app->post('/', function ($request, $response)
 		$userMessage = $event['message']['text'];
 		if(strtolower($userMessage) == 'halo')
 		{
-			$message = "Hai selamat datang di klinik hewan cimanggu, apa yang dapat kami bantu ? ketik -lanjut untuk melanjutkan atau -end untuk mengakhiri";
+			$message = "Hai selamat datang di klinik hewan cimanggu \nLayanan chat kami akan membantu menjawab pertanyaan umum seputar klinik \n \nKetik salah satu perintah dibawah ini \n\n-lanjut untuk melanjutkan \n-end untuk mengakhiri";
            		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();			
 		}
 		if(strtolower($userMessage) == '-end')
 		{
-			$message = "Terimakasih telah menghubungi klinik hewan cimanggu, silahkan rate kami di aplikasi google anda";
+			$message = "Terimakasih telah menghubungi Layanan Chat klinik hewan cimanggu.\n \nJangan lupa untuk memberikann rating tentang kami di aplikasi google anda";
            	 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 		if(strtolower($userMessage) == '-lanjut')
 		{
-			$message = "Apa yang bisa kami bantu ? ketik -biaya periksa";
+			$message = "Apa yang dapat kami bantu ? \n \nSilahkan ketik salah satu perintah dibawah ini \n-biaya konsultasi \n-biaya vaksin \n-biaya rehabilitasi";
            	 	$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
